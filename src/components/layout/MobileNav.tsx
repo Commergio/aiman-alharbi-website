@@ -44,7 +44,7 @@ export function MobileNav() {
           <>
             <motion.button
               type="button"
-              className="fixed inset-0 z-50 bg-[#0F2745]/40 backdrop-blur-[2px]"
+              className="fixed inset-0 z-[100] bg-[#0F2745]/40 backdrop-blur-[2px]"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -53,7 +53,7 @@ export function MobileNav() {
             />
             <motion.nav
               id="mobile-nav-panel"
-              className="fixed inset-x-0 top-0 z-50 flex max-h-[min(92dvh,640px)] flex-col rounded-b-3xl border-b border-[#0F2745]/10 bg-white/95 px-5 pb-8 pt-[max(4.75rem,env(safe-area-inset-top))] shadow-2xl backdrop-blur-xl sm:pt-[max(5.25rem,env(safe-area-inset-top))] md:pt-[max(6.25rem,env(safe-area-inset-top))] lg:pt-[max(7.25rem,env(safe-area-inset-top))]"
+              className="fixed inset-x-0 top-0 z-[101] flex max-h-[min(92dvh,640px)] flex-col overflow-y-auto overscroll-contain rounded-b-3xl border-b border-[#0F2745]/10 bg-white/95 px-5 pb-8 pt-[max(4.75rem,env(safe-area-inset-top))] shadow-2xl backdrop-blur-xl sm:pt-[max(5.25rem,env(safe-area-inset-top))] md:pt-[max(6.25rem,env(safe-area-inset-top))] lg:pt-[max(7.25rem,env(safe-area-inset-top))]"
               initial={{ opacity: 0, y: -24 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -16 }}

@@ -32,11 +32,13 @@ export function LanguageToggle({ className, compact }: LanguageToggleProps) {
           type="button"
           onClick={() => setLocale(opt.id)}
           className={cn(
-            "min-h-7 rounded-md px-2 py-0.5 text-[10px] font-medium leading-none transition",
+            "rounded-md font-medium leading-none transition sm:rounded-md",
+            "min-h-11 min-w-11 px-3 text-xs sm:min-h-7 sm:min-w-0 sm:px-2 sm:py-0.5 sm:text-[10px]",
             locale === opt.id
               ? "bg-[#0F2745] text-white shadow-sm"
               : "text-[#4a6078] hover:text-[#0F2745]",
-            compact && "min-h-6 px-1.5 py-px text-[9px]",
+            compact &&
+              "min-h-10 min-w-10 px-2 py-1 text-[10px] sm:min-h-6 sm:min-w-0 sm:px-1.5 sm:py-px sm:text-[9px]",
           )}
           aria-pressed={locale === opt.id}
         >

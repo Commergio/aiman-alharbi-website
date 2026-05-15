@@ -49,7 +49,7 @@ export function BiographySection() {
           <figcaption className="bio-office-caption">{s.office.caption}</figcaption>
         </motion.figure>
 
-        <RevealStagger className="grid gap-10 lg:grid-cols-[0.95fr_1.15fr]">
+        <RevealStagger className="grid gap-10 lg:grid-cols-[0.95fr_1.15fr] lg:items-start [&>*]:min-w-0">
           <RevealItem>
             <Card className="glass-card space-y-1 p-6 md:p-8">
               {s.highlights.map((item) => (
@@ -64,7 +64,7 @@ export function BiographySection() {
             </Card>
           </RevealItem>
           <RevealItem>
-            <motion.div className="bio-narrative flex flex-col gap-5 text-[#344B63]">
+            <motion.div className="bio-narrative flex min-w-0 flex-col gap-5 text-[#344B63]">
               <div className="bio-executive-panel">
                 <div className="bio-executive-panel-inner">
                   <p className="bio-executive-panel-kicker">{s.summaryHeading}</p>

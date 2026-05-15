@@ -477,6 +477,25 @@ body {
   color: #2a4058;
 }
 
+@media (max-width: 639px) {
+  .bio-executive-panel {
+    max-width: 100%;
+  }
+
+  .bio-executive-panel-inner::after {
+    opacity: 0.35;
+  }
+
+  .bio-executive-point {
+    padding: 0.85rem 0.9rem;
+  }
+
+  .bio-executive-point-index {
+    min-width: 1.65rem;
+    font-size: 0.75rem;
+  }
+}
+
 @media (min-width: 640px) {
   .bio-executive-panel-inner {
     padding: 1.4rem 1.35rem 1.45rem;
@@ -900,8 +919,34 @@ html[dir="rtl"] .experience-marquee-animate {
   }
 
   .hero-copy {
-    padding: 1rem 1.1rem;
+    padding: 1rem 0.95rem;
+    padding-inline-start: 1.15rem;
     border-radius: 1.15rem;
+    max-width: 100%;
+  }
+
+  .hero-badge {
+    max-width: 100%;
+    flex-wrap: wrap;
+    row-gap: 0.25rem;
+    padding-inline: 0.85rem;
+    letter-spacing: 0.04em;
+  }
+
+  .hero-title {
+    font-size: clamp(1.65rem, 6.8vw + 0.4rem, 2.35rem);
+    text-wrap: balance;
+    overflow-wrap: break-word;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1rem, 4.5vw + 0.35rem, 1.25rem);
+    overflow-wrap: break-word;
+  }
+
+  .hero-description {
+    overflow-wrap: break-word;
+    max-width: 100%;
   }
 
   .hero-backdrop-wash {

@@ -35,12 +35,12 @@ export function HeroSection() {
     >
       <HeroBackdrop />
 
-      <motion.div className="hero-section-content section-shell relative z-10 grid items-center gap-4 pb-10 pt-1 min-[520px]:grid-cols-[minmax(0,1fr)_minmax(280px,48%)] min-[520px]:items-stretch min-[520px]:gap-6 min-[520px]:pb-12 min-[520px]:pt-2 lg:min-[520px]:grid-cols-[minmax(0,1fr)_minmax(320px,46%)] lg:gap-8 lg:pb-14 lg:pt-3">
+      <motion.div className="hero-section-content section-shell relative z-10 grid min-w-0 items-center gap-4 pb-10 pt-1 min-[520px]:grid-cols-[minmax(0,1fr)_minmax(280px,48%)] min-[520px]:items-stretch min-[520px]:gap-6 min-[520px]:pb-12 min-[520px]:pt-2 lg:min-[520px]:grid-cols-[minmax(0,1fr)_minmax(320px,46%)] lg:gap-8 lg:pb-14 lg:pt-3">
         <motion.div
           variants={container}
           initial="hidden"
           animate="show"
-          className="hero-copy relative z-10 min-w-0 space-y-4 sm:space-y-5 lg:pe-2"
+          className="hero-copy relative z-10 min-w-0 max-w-full space-y-4 sm:space-y-5 lg:pe-2"
         >
           <motion.span variants={item} className="hero-badge">
             <span className="hero-badge-dot" aria-hidden />
@@ -73,7 +73,7 @@ export function HeroSection() {
         </motion.div>
 
         <motion.div
-          className="hero-portrait relative mx-auto flex w-full max-w-[min(94vw,400px)] shrink-0 flex-col justify-end min-[400px]:max-w-[440px] min-[520px]:mx-0 min-[520px]:h-full min-[520px]:w-full min-[520px]:max-w-none"
+          className="hero-portrait relative mx-auto flex w-full min-w-0 max-w-[min(94vw,400px)] shrink-0 flex-col justify-end min-[400px]:max-w-[440px] min-[520px]:mx-0 min-[520px]:h-full min-[520px]:w-full min-[520px]:max-w-none"
           initial={{ opacity: 0, x: 16 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.85, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}

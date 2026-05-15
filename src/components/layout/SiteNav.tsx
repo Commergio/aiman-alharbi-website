@@ -47,7 +47,7 @@ export function SiteNav() {
               height={64}
               priority
               sizes="(max-width: 1024px) 40vw, 160px"
-              className="h-9 w-auto max-w-full object-contain object-center sm:h-10 md:h-11"
+              className="h-8 w-auto max-w-full object-contain object-center min-[360px]:h-9 sm:h-10 md:h-11"
             />
           </span>
         </Link>

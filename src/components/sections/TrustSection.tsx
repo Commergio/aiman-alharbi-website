@@ -29,7 +29,7 @@ export function TrustSection() {
             transition={{ duration: 0.35 }}
           >
             <Quote className="size-5 text-[#D2B181]" />
-            <p className="mt-5 text-lg leading-9 text-[#e7edf3]">{s.quote}</p>
+            <p className="mt-5 text-base leading-8 text-[#e7edf3] sm:text-lg sm:leading-9">{s.quote}</p>
             <p className="mt-6 font-body-en text-xs tracking-[0.34em] text-[#D2B181]">{s.tag}</p>
             <div className="pointer-events-none absolute -end-16 -top-16 size-48 rounded-full bg-[#B8925A]/10 blur-2xl" />
           </motion.div>
