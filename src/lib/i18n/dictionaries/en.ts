@@ -86,9 +86,21 @@ export const en: Dictionary = {
       ],
       book: {
         alt: "The Customer Is the Boss — book by Aiman Alharbi",
-        title: "Author: The Customer Is the Boss",
+        kicker: "Professional Publication",
+        title: "The Customer Is the Boss",
         description:
-          "A professional publication focused on customer centricity and institutional marketing performance development.",
+          "By Aiman Shuja Al-Harbi — a practical framework for institutional marketing and lasting customer relationships.",
+        synopsis: [
+          "The book offers an executive perspective that connects marketing strategy with customer centricity, grounded in Gulf and Saudi business realities.",
+          "It turns customer insight into actionable marketing decisions, with practical tools to measure performance and improve experience over the long term.",
+          "Ideal for leaders, marketing teams, and consultants building growth on trust and loyalty—not short campaigns alone.",
+        ],
+        highlights: [
+          "Effective strategies for attraction and retention",
+          "Deeper understanding of customer behavior",
+          "Stronger marketing performance and sustainable relationships",
+          "Practical, applicable business insights",
+        ],
       },
       office: {
         alt: "Aiman Alharbi executive office with the Riyadh skyline in view",
@@ -261,10 +273,14 @@ export const en: Dictionary = {
       form: {
         title: "Consultation Request",
         name: "Full name",
+        email: "Email address",
         phone: "Mobile number",
         serviceType: "Service type",
         message: "Your message or consultation details",
         submit: "Submit Request",
+        sending: "Sending…",
+        success: "Your request was sent successfully. We will contact you soon.",
+        error: "Could not send your request. Please try again or contact us on WhatsApp.",
         options: ["Marketing consulting", "Real estate consulting", "Corporate training", "Business development"],
       },
     },

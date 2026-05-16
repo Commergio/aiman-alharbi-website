@@ -17,7 +17,7 @@ export function ArticlesSection() {
         <SectionHeading title={s.title} subtitle={s.subtitle} />
 
         <motion.div
-          className="grid gap-5 md:grid-cols-2 xl:grid-cols-3"
+          className="grid auto-rows-fr gap-5 sm:grid-cols-2 xl:grid-cols-3"
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.1 }}
@@ -31,8 +31,8 @@ export function ArticlesSection() {
                 show: { opacity: 1, y: 0, transition: { duration: 0.55 } },
               }}
               whileHover={{ y: -6 }}
-              className={`editorial-card group relative flex flex-col overflow-hidden rounded-[1.35rem] border border-[#0F2745]/10 bg-white p-6 ${
-                index === 0 ? "md:row-span-2 md:p-8" : ""
+              className={`editorial-card group relative flex min-w-0 flex-col overflow-hidden rounded-[1.35rem] border border-[#0F2745]/10 bg-white p-5 sm:p-6 ${
+                index === 0 ? "xl:row-span-2 xl:p-8" : ""
               }`}
             >
               <div className="flex items-center justify-between gap-3">
@@ -42,8 +42,8 @@ export function ArticlesSection() {
                 <span className="font-body-en text-[10px] text-[#9aacbd]">{article.read}</span>
               </div>
               <h3
-                className={`mt-5 font-semibold leading-snug text-[#0F2745] ${
-                  index === 0 ? "text-2xl md:text-3xl" : "text-lg"
+                className={`mt-5 break-safe font-semibold leading-snug text-[#0F2745] ${
+                  index === 0 ? "text-xl sm:text-2xl xl:text-3xl" : "text-lg"
                 }`}
               >
                 {article.title}

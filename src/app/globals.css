@@ -17,6 +17,12 @@
   --line: rgba(15, 39, 69, 0.12);
   --glass: rgba(255, 255, 255, 0.88);
   --glass-border: rgba(255, 255, 255, 0.65);
+  /* أبعاد إطارات مرنة — لا تتجاوز عرض الشاشة */
+  --bio-book-frame-width: min(18rem, calc(100vw - 2.5rem));
+  --bio-book-aspect: 1086 / 1448;
+  --hero-portrait-frame-width: min(20rem, calc(100vw - 2.5rem));
+  --hero-portrait-aspect: 408 / 612;
+  --experience-card-width: min(12.5rem, calc(100vw - 3rem));
 }
 
 @theme inline {
@@ -52,7 +58,18 @@ body {
 }
 
 .section-shell {
-  @apply mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-8 lg:px-14;
+  @apply mx-auto w-full max-w-7xl min-w-0 px-4 sm:px-6 md:px-8 lg:px-14;
+}
+
+/* أساس التجاوب — منع كسر التخطيط والتمرير الأفقي */
+.page-main {
+  min-width: 0;
+  overflow-x: clip;
+}
+
+.break-safe {
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 /* توافق الجوال — مسافات آمنة ولمس */
@@ -90,6 +107,7 @@ body {
 .section-surface > *:not(.section-surface-accent):not(.hero-backdrop) {
   position: relative;
   z-index: 1;
+  max-width: 100%;
 }
 
 .section-surface-accent {
@@ -286,8 +304,11 @@ body {
   }
 }
 
-/* بطاقة الكتاب — مقاس مدمج ومركز */
-.bio-book-card {
+/* قسم الكتاب — صورة ثابتة + نبذة بجانبها */
+.bio-book-showcase {
+  width: 100%;
+  max-width: none !important;
+  margin-inline: 0 !important;
   background: rgba(255, 255, 255, 0.94) !important;
   box-shadow:
     0 4px 6px -1px rgba(15, 39, 69, 0.06),
@@ -295,17 +316,141 @@ body {
     inset 0 1px 0 rgba(255, 255, 255, 0.95);
 }
 
+.bio-book-layout {
+  display: grid;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.bio-book-media {
+  justify-self: center;
+  width: var(--bio-book-frame-width);
+  max-width: min(var(--bio-book-frame-width), 100%);
+  flex-shrink: 0;
+}
+
 .bio-book-visual {
-  border-bottom: 1px solid rgba(184, 146, 90, 0.18);
+  position: relative;
+  width: 100%;
+  aspect-ratio: var(--bio-book-aspect);
+  border: 1px solid rgba(184, 146, 90, 0.22);
   background: #0a2744;
   line-height: 0;
+  box-shadow: 0 16px 36px -24px rgba(15, 39, 69, 0.35);
+}
+
+.bio-book-about {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.bio-book-kicker {
+  margin: 0;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #9a7540;
+}
+
+.bio-book-title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  color: #0f2745;
+}
+
+.bio-book-lead {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.7;
+  color: #2a4058;
+}
+
+.bio-book-synopsis {
+  margin-top: 0.25rem;
+}
+
+.bio-book-paragraph {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.75;
+  color: #3d536c;
+}
+
+.bio-book-highlights {
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.bio-book-highlight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.55;
+  color: #344b63;
+}
+
+.bio-book-highlight-icon {
+  margin-top: 0.15rem;
+  width: 0.95rem;
+  height: 0.95rem;
+  flex-shrink: 0;
+  color: #b8925a;
+}
+
+@media (min-width: 768px) {
+  .bio-book-layout {
+    grid-template-columns: minmax(0, 1fr) var(--bio-book-frame-width);
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .bio-book-about {
+    order: 1;
+  }
+
+  .bio-book-media {
+    order: 2;
+    justify-self: end;
+  }
+
+  .bio-book-title {
+    font-size: 1.25rem;
+  }
+
+  .bio-book-lead {
+    font-size: 0.9375rem;
+  }
+
+  .bio-book-paragraph {
+    font-size: 0.875rem;
+    line-height: 1.8;
+  }
+
+  .bio-book-highlight-item {
+    font-size: 0.875rem;
+  }
 }
 
 .bio-book-image {
   display: block;
-  width: 100%;
-  height: auto;
-  vertical-align: top;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  object-fit: cover;
+  object-position: center center;
 }
 
 .bio-book-shine {
@@ -319,42 +464,6 @@ body {
     rgba(0, 0, 0, 0.12) 100%
   );
   pointer-events: none;
-}
-
-.bio-book-copy {
-  padding: 0.75rem 0.85rem 0.9rem;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.99) 0%, rgba(248, 250, 252, 0.94) 100%);
-}
-
-.bio-book-title {
-  font-size: 0.8125rem;
-  font-weight: 600;
-  line-height: 1.45;
-  letter-spacing: -0.01em;
-  color: #0f2745;
-}
-
-.bio-book-description {
-  margin-top: 0.375rem;
-  font-size: 0.6875rem;
-  font-weight: 500;
-  line-height: 1.65;
-  color: #516374;
-}
-
-@media (min-width: 640px) {
-  .bio-book-copy {
-    padding: 0.85rem 0.95rem 1rem;
-  }
-
-  .bio-book-title {
-    font-size: 0.875rem;
-  }
-
-  .bio-book-description {
-    font-size: 0.75rem;
-    line-height: 1.7;
-  }
 }
 
 /* لوحة الملخص التنفيذي — تصميم عصري */
@@ -586,49 +695,110 @@ body {
   color: #d2b181;
 }
 
-.experience-marquee-viewport {
+/* شريط الخبرة — امتداد آمن داخل الحاوية بدون 100vw */
+.experience-marquee-bleed {
+  position: relative;
+  max-width: 100%;
+  margin-top: 0;
+  margin-inline: -1rem;
+  width: calc(100% + 2rem);
+  padding-inline: 0;
   overflow: hidden;
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    #000 5%,
-    #000 95%,
-    transparent 100%
-  );
-  mask-image: linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%);
 }
 
-html[dir="rtl"] .experience-marquee-viewport {
-  -webkit-mask-image: linear-gradient(
-    to left,
-    transparent 0%,
-    #000 5%,
-    #000 95%,
-    transparent 100%
-  );
-  mask-image: linear-gradient(to left, transparent 0%, #000 5%, #000 95%, transparent 100%);
+@media (min-width: 640px) {
+  .experience-marquee-bleed {
+    margin-inline: -1.5rem;
+    width: calc(100% + 3rem);
+  }
+}
+
+@media (min-width: 768px) {
+  .experience-marquee-bleed {
+    margin-inline: -2rem;
+    width: calc(100% + 4rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .experience-marquee-bleed {
+    margin-inline: -3.5rem;
+    width: calc(100% + 7rem);
+  }
+}
+
+.experience-card {
+  width: var(--experience-card-width);
+}
+
+@media (min-width: 640px) {
+  :root {
+    --experience-card-width: 13.75rem;
+  }
+}
+
+.experience-marquee-viewport {
+  overflow: hidden;
+  direction: ltr;
+  min-height: 0;
+  -webkit-mask-image: linear-gradient(to right, #000 0%, #000 94%, transparent 100%);
+  mask-image: linear-gradient(to right, #000 0%, #000 94%, transparent 100%);
+}
+
+.experience-marquee-track {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  width: max-content;
+  max-width: none;
+  flex-shrink: 0;
+  direction: ltr;
+}
+
+.experience-marquee-group {
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  gap: 0.625rem;
+  padding-inline-end: 0.625rem;
+}
+
+@media (min-width: 640px) {
+  .experience-marquee-group {
+    gap: 0.75rem;
+    padding-inline-end: 0.75rem;
+  }
 }
 
 .experience-marquee-animate {
-  animation: experience-marquee 42s linear infinite;
   will-change: transform;
 }
 
-.experience-marquee-viewport:hover .experience-marquee-animate {
+.experience-marquee-animate--ready {
+  animation: experience-marquee var(--marquee-duration, 40s) linear infinite;
+}
+
+.experience-marquee-viewport:hover .experience-marquee-animate--ready {
   animation-play-state: paused;
 }
 
 @keyframes experience-marquee {
   from {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
   to {
-    transform: translateX(-50%);
+    transform: translate3d(calc(-1 * var(--marquee-shift, 0px)), 0, 0);
   }
 }
 
-html[dir="rtl"] .experience-marquee-animate {
-  animation-direction: reverse;
+@media (max-width: 639px) {
+  .experience-marquee-viewport {
+    -webkit-mask-image: linear-gradient(to right, #000 0%, #000 92%, transparent 100%);
+    mask-image: linear-gradient(to right, #000 0%, #000 92%, transparent 100%);
+  }
 }
 
 .stat-card {
@@ -957,7 +1127,23 @@ html[dir="rtl"] .experience-marquee-animate {
   }
 }
 
+/* إطار صورة أيمن — عرض ثابت على كل الأجهزة والمتصفحات */
+.hero-portrait {
+  box-sizing: border-box;
+  display: flex;
+  width: var(--hero-portrait-frame-width);
+  max-width: min(var(--hero-portrait-frame-width), 100%);
+  margin-inline: auto;
+  flex-shrink: 0;
+  flex-direction: column;
+  justify-content: flex-end;
+  isolation: isolate;
+}
+
 .hero-portrait-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: var(--hero-portrait-aspect);
   overflow: hidden;
   /* حواف منحنية — قوس علوي ناعم وحواف سفلية مستديرة */
   border-radius: 42% 42% 1.35rem 1.35rem / 28% 28% 1.35rem 1.35rem;
@@ -977,25 +1163,14 @@ html[dir="rtl"] .experience-marquee-animate {
 }
 
 .hero-portrait-image {
-  object-fit: cover !important;
-  object-position: center bottom;
-  width: 92% !important;
-  height: 105% !important;
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
   max-width: none !important;
-  inset: auto !important;
-  bottom: 0 !important;
-  left: 50% !important;
-  right: auto !important;
-  top: auto !important;
-  transform: translateX(-50%);
-  transform-origin: center bottom;
-}
-
-@media (min-width: 520px) {
-  .hero-portrait-image {
-    width: 90% !important;
-    height: 110% !important;
-  }
+  inset: 0 !important;
+  object-fit: cover !important;
+  object-position: center bottom !important;
+  transform: none !important;
 }
 
 .hero-portrait-media::after {
@@ -1005,16 +1180,6 @@ html[dir="rtl"] .experience-marquee-animate {
   border-radius: inherit;
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
   pointer-events: none;
-}
-
-.hero-portrait {
-  isolation: isolate;
-}
-
-@media (min-width: 520px) {
-  .hero-portrait-media {
-    max-height: none !important;
-  }
 }
 
 html.lenis,
@@ -1040,15 +1205,25 @@ html.lenis body {
     @apply px-3.5;
   }
 
+  .experience-marquee-bleed {
+    margin-inline: -0.875rem;
+    width: calc(100% + 1.75rem);
+  }
+
   .ai-assistant {
-    max-width: calc(100vw - 1.5rem) !important;
+    max-width: calc(100% - 1.5rem) !important;
     inset-inline-start: 0.75rem !important;
+  }
+
+  .whatsapp-fab {
+    inset-inline-end: 0.75rem !important;
   }
 }
 
-@media (max-width: 519px) {
-  .hero-portrait-media {
-    max-height: min(360px, 52vh) !important;
+/* مساحة آمنة أسفل المحتوى لأزرار عائمة */
+@media (max-width: 1023px) {
+  .page-main {
+    padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
   }
 }
 

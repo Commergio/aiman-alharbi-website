@@ -33,10 +33,10 @@ export function SiteNav() {
         boxShadow: shadow,
       }}
     >
-      <div className="section-shell flex items-center justify-between gap-2 py-3 sm:gap-3 sm:py-3.5">
+      <div className="section-shell flex min-w-0 items-center justify-between gap-2 py-3 sm:gap-3 sm:py-3.5">
         <Link
           href="#hero"
-          className="flex min-w-0 flex-1 items-center max-w-[calc(100%-3rem)] min-[380px]:max-w-[calc(100%-7.25rem)] min-[400px]:max-w-[calc(100%-9rem)] lg:max-w-none"
+          className="flex min-w-0 max-w-[min(100%,14rem)] flex-1 items-center sm:max-w-[min(100%,16rem)] lg:max-w-none"
           aria-label={nav.homeAria}
         >
           <span className="inline-flex shrink-0 overflow-hidden rounded-lg bg-white p-1.5 shadow-[0_6px_18px_-10px_rgba(15,39,69,0.35)] sm:rounded-xl sm:p-2">

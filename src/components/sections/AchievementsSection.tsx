@@ -30,13 +30,13 @@ export function AchievementsSection() {
                 hidden: { opacity: 0, scale: 0.92 },
                 show: { opacity: 1, scale: 1, transition: { duration: 0.55 } },
               }}
-              className="stat-card group relative overflow-hidden rounded-2xl border border-[#0F2745]/10 bg-white/90 px-4 py-6 text-center backdrop-blur-sm sm:px-5 sm:py-8"
+              className="stat-card group relative min-w-0 overflow-hidden rounded-2xl border border-[#0F2745]/10 bg-white/90 px-3 py-5 text-center backdrop-blur-sm sm:px-5 sm:py-8"
             >
               <motion.div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#B8925A]/5 to-transparent opacity-0 transition group-hover:opacity-100" />
-              <p className="font-heading-en text-3xl font-semibold text-[#0F2745] sm:text-4xl md:text-5xl">
+              <p className="font-heading-en text-2xl font-semibold text-[#0F2745] sm:text-4xl md:text-5xl">
                 <AnimatedCounter value={stat.value} />
               </p>
-              <p className="mt-3 text-sm leading-snug text-[#4a6078]">{stat.label}</p>
+              <p className="mt-2 break-safe text-xs leading-snug text-[#4a6078] sm:mt-3 sm:text-sm">{stat.label}</p>
               <p className="mt-1 font-body-en text-[9px] uppercase tracking-[0.28em] text-[#9aacbd]">
                 {stat.labelSecondary}
               </p>

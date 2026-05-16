@@ -13,7 +13,7 @@ export function CertificationsSection() {
 
   return (
     <AnimatedSection id="certifications">
-      <motion.div className="section-shell">
+      <div className="section-shell min-w-0">
         <SectionHeading title={s.title} subtitle={s.subtitle} />
 
         <motion.div
@@ -28,7 +28,7 @@ export function CertificationsSection() {
             <p className="text-sm leading-7 text-[#3d5169]">{s.intro}</p>
           </div>
 
-          <div className="overflow-x-auto overflow-y-hidden rounded-[1.65rem] border border-[#0F2745]/12 bg-white shadow-[0_28px_60px_-36px_rgba(15,39,69,0.45)]">
+          <div className="overflow-x-auto overflow-y-hidden overscroll-x-contain rounded-[1.65rem] border border-[#0F2745]/12 bg-white shadow-[0_28px_60px_-36px_rgba(15,39,69,0.45)] [-webkit-overflow-scrolling:touch]">
             <motion.div
               className="border-b border-white/10 bg-[#0F2745] px-6 py-5 text-white"
               initial={{ opacity: 0 }}
@@ -42,7 +42,7 @@ export function CertificationsSection() {
               {s.credentials.map((row, index) => (
                 <motion.div
                   key={`${row.category}-${index}`}
-                  className="flex flex-col gap-4 px-5 py-5 sm:px-6 md:flex-row md:items-start md:justify-between"
+                  className="flex min-w-0 flex-col gap-4 px-5 py-5 sm:px-6 md:flex-row md:items-start md:justify-between"
                   initial={{ opacity: 0, x: -12 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
@@ -54,7 +54,7 @@ export function CertificationsSection() {
                     </span>
                     <div>
                       <p className="text-xs font-semibold text-[#B8925A]">{row.category}</p>
-                      <p className="mt-1.5 text-base font-medium text-[#0F2745]">{row.title}</p>
+                      <p className="mt-1.5 break-safe text-base font-medium text-[#0F2745]">{row.title}</p>
                       {row.detail ? <p className="mt-1 text-sm text-[#4a6078]">{row.detail}</p> : null}
                     </div>
                   </div>
@@ -69,7 +69,7 @@ export function CertificationsSection() {
             </div>
           </div>
         </motion.div>
-      </motion.div>
+      </div>
     </AnimatedSection>
   );
 }

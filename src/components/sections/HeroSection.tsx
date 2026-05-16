@@ -35,7 +35,7 @@ export function HeroSection() {
     >
       <HeroBackdrop />
 
-      <motion.div className="hero-section-content section-shell relative z-10 grid min-w-0 items-center gap-4 pb-10 pt-1 min-[520px]:grid-cols-[minmax(0,1fr)_minmax(280px,48%)] min-[520px]:items-stretch min-[520px]:gap-6 min-[520px]:pb-12 min-[520px]:pt-2 lg:min-[520px]:grid-cols-[minmax(0,1fr)_minmax(320px,46%)] lg:gap-8 lg:pb-14 lg:pt-3">
+      <div className="hero-section-content section-shell relative z-10 grid min-w-0 items-center gap-4 pb-10 pt-1 md:grid-cols-[minmax(0,1fr)_minmax(240px,42%)] md:items-stretch md:gap-6 md:pb-12 md:pt-2 lg:grid-cols-[minmax(0,1fr)_minmax(280px,40%)] lg:gap-8 lg:pb-14 lg:pt-3">
         <motion.div
           variants={container}
           initial="hidden"
@@ -59,27 +59,27 @@ export function HeroSection() {
             {site.description}
           </motion.p>
 
-          <motion.div variants={item} className="hero-cta flex flex-col gap-2.5 pt-2 min-[400px]:flex-row min-[400px]:flex-wrap min-[400px]:gap-3">
-            <MagneticButton href="#contact" variant="default" size="lg" className="w-full min-[400px]:w-auto">
+          <motion.div variants={item} className="hero-cta flex flex-col gap-2.5 pt-2 sm:flex-row sm:flex-wrap sm:gap-3">
+            <MagneticButton href="#contact" variant="default" size="lg" className="w-full sm:w-auto sm:min-w-[10.5rem]">
               {hero.ctaBook}
             </MagneticButton>
-            <MagneticButton href="#biography" variant="secondary" size="lg" className="w-full min-[400px]:w-auto">
+            <MagneticButton href="#biography" variant="secondary" size="lg" className="w-full sm:w-auto sm:min-w-[10.5rem]">
               {hero.ctaProfile}
             </MagneticButton>
-            <MagneticButton href="#contact" variant="gold" size="lg" className="w-full min-[400px]:w-auto">
+            <MagneticButton href="#contact" variant="gold" size="lg" className="w-full sm:w-auto sm:min-w-[10.5rem]">
               {hero.ctaContact}
             </MagneticButton>
           </motion.div>
         </motion.div>
 
         <motion.div
-          className="hero-portrait relative mx-auto flex w-full min-w-0 max-w-[min(94vw,400px)] shrink-0 flex-col justify-end min-[400px]:max-w-[440px] min-[520px]:mx-0 min-[520px]:h-full min-[520px]:w-full min-[520px]:max-w-none"
+          className="hero-portrait"
           initial={{ opacity: 0, x: 16 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.85, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
         >
           <motion.div
-            className="hero-portrait-media relative w-full min-h-[min(260px,42vh)] min-[520px]:min-h-0 min-[520px]:flex-1 min-[520px]:h-full"
+            className="hero-portrait-media"
             animate={reducedMotion ? undefined : portraitFloat}
           >
             <Image
@@ -87,12 +87,12 @@ export function HeroSection() {
               alt={hero.photoAlt}
               fill
               priority
-              className="hero-portrait-image"
-              sizes="(max-width: 519px) 400px, (max-width: 1280px) 520px, 620px"
+              className="hero-portrait-image object-cover"
+              sizes="320px"
             />
           </motion.div>
           <motion.span
-            className="mt-3 hidden shrink-0 font-body-en text-[9px] tracking-[0.28em] text-[#8a9bb0] min-[520px]:block"
+            className="mt-3 hidden shrink-0 font-body-en text-[9px] tracking-[0.28em] text-[#8a9bb0] md:block"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
@@ -100,7 +100,7 @@ export function HeroSection() {
             {hero.years}
           </motion.span>
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 }

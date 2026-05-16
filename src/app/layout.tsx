@@ -67,7 +67,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ar" dir="rtl" suppressHydrationWarning className={`${arabic.variable} ${inter.variable} ${playfair.variable} h-full antialiased`}>
-      <body className="sharp-ui relative flex min-h-full flex-col overflow-x-hidden bg-[#f8fafc]">
+      <body className="sharp-ui relative flex min-h-full flex-col overflow-x-clip bg-[#f8fafc]">
         <div className="relative z-10 flex min-h-full flex-1 flex-col">{children}</div>
       </body>
     </html>

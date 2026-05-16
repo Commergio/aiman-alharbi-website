@@ -60,7 +60,14 @@ export type Dictionary = {
       summaryHeading: string;
       paragraphs: string[];
       highlights: string[];
-      book: { alt: string; title: string; description: string };
+      book: {
+        alt: string;
+        kicker: string;
+        title: string;
+        description: string;
+        synopsis: string[];
+        highlights: string[];
+      };
       office: { alt: string; caption: string };
     };
     experience: { title: string; subtitle: string; timeline: TimelineItem[] };
@@ -85,10 +92,14 @@ export type Dictionary = {
       form: {
         title: string;
         name: string;
+        email: string;
         phone: string;
         serviceType: string;
         message: string;
         submit: string;
+        sending: string;
+        success: string;
+        error: string;
         options: string[];
       };
     };

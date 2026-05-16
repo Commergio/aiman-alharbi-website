@@ -32,7 +32,7 @@ export function ServicesSection() {
                 key={title}
                 variants={staggerItem}
                 whileHover={{ y: -5 }}
-                className="service-card group relative overflow-hidden rounded-[1.35rem] border border-[#0F2745]/10 bg-white/80 p-5 backdrop-blur-md sm:p-6"
+                className="service-card group relative min-w-0 overflow-hidden rounded-[1.35rem] border border-[#0F2745]/10 bg-white/80 p-5 backdrop-blur-md sm:p-6"
               >
                 <div
                   className="pointer-events-none absolute inset-0 rounded-[1.35rem] opacity-0 transition-opacity group-hover:opacity-100"
@@ -49,7 +49,7 @@ export function ServicesSection() {
                     <Icon className="size-5" />
                   </span>
                 </div>
-                <CardTitle className="relative mt-4 text-base sm:text-lg">{title}</CardTitle>
+                <CardTitle className="relative mt-4 break-safe text-base sm:text-lg">{title}</CardTitle>
                 <CardDescription className="relative mt-2">{s.cardDescription}</CardDescription>
               </motion.div>
             );

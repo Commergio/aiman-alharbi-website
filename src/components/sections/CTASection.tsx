@@ -24,7 +24,7 @@ export function CTASection() {
           <Particles className="opacity-40 mix-blend-screen" />
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_100%_0%,rgba(184,146,90,0.18),transparent_55%)]" />
           <p className="font-body-en text-[10px] uppercase tracking-[0.38em] text-[#D2B181]">{s.tag}</p>
-          <h3 className="mt-4 max-w-xl text-3xl font-semibold leading-tight md:text-4xl">{s.title}</h3>
+          <h3 className="mt-4 max-w-xl text-balance text-2xl font-semibold leading-tight sm:text-3xl md:text-4xl">{s.title}</h3>
           <p className="mt-4 max-w-2xl text-base leading-8 text-[#d8e1ec]">{s.description}</p>
           <div className="mt-8">
             <MagneticButton href="#contact" variant="gold" size="lg">

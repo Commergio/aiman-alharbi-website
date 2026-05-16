@@ -55,7 +55,7 @@ function HomePageContent() {
 
       <SiteNav />
 
-      <main className="relative z-10 min-w-0 overflow-x-clip">
+      <main className="page-main relative z-10 min-w-0">
         <HeroSection />
         <BiographySection />
         <ExperienceSection />

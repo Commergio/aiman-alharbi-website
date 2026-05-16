@@ -11,9 +11,6 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/card";
 import { useTranslations } from "@/contexts/LocaleContext";
 
-/** أبعاد ملف صورة الكتاب في `public` — لنسبة العرض قدر الإمكان بدون قص */
-const BOOK_IMAGE_NATURAL_W = 1086;
-const BOOK_IMAGE_NATURAL_H = 1448;
 const BIOGRAPHY_BOOK_IMAGE = encodeURI("/ChatGPT Image May 16, 2026, 12_03_38 AM.png");
 
 export function BiographySection() {
@@ -22,7 +19,7 @@ export function BiographySection() {
 
   return (
     <AnimatedSection id="biography">
-      <motion.div className="section-shell">
+      <div className="section-shell min-w-0">
         <SectionHeading title={s.title} subtitle={s.subtitle} />
 
         <motion.figure
@@ -58,7 +55,7 @@ export function BiographySection() {
                   className="flex items-start gap-3 border-b border-[#0F2745]/8 py-4 last:border-none"
                 >
                   <CheckCircle2 className="mt-1 size-4 shrink-0 text-[#B8925A]" />
-                  <p className="text-[#2E445D]">{item}</p>
+                  <p className="break-safe text-[#2E445D]">{item}</p>
                 </div>
               ))}
             </Card>
@@ -81,31 +78,51 @@ export function BiographySection() {
                 </div>
               </div>
 
-              <Card className="bio-book-card glass-card mx-auto mt-2 w-full max-w-[264px] overflow-hidden rounded-2xl border border-[#B8925A]/22 p-0 shadow-none backdrop-blur-[6px] sm:max-w-[288px] md:max-w-[304px]">
-                <motion.div
-                  className="bio-book-visual relative w-full overflow-hidden rounded-t-2xl"
-                  whileHover={{ scale: 1.02, y: -2 }}
-                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                >
-                  <Image
-                    src={BIOGRAPHY_BOOK_IMAGE}
-                    alt={s.book.alt}
-                    width={BOOK_IMAGE_NATURAL_W}
-                    height={BOOK_IMAGE_NATURAL_H}
-                    className="bio-book-image"
-                    sizes="(max-width: 640px) 264px, 304px"
-                  />
-                  <div className="bio-book-shine" aria-hidden />
-                </motion.div>
-                <div className="bio-book-copy">
-                  <p className="bio-book-title">{s.book.title}</p>
-                  <p className="bio-book-description">{s.book.description}</p>
+              <Card className="bio-book-showcase glass-card mt-2 overflow-hidden rounded-2xl border border-[#B8925A]/22 p-4 shadow-none backdrop-blur-[6px] sm:p-5">
+                <div className="bio-book-layout">
+                  <motion.div
+                    className="bio-book-media"
+                    whileHover={{ scale: 1.02, y: -2 }}
+                    transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                  >
+                    <motion.div className="bio-book-visual relative overflow-hidden rounded-2xl">
+                      <Image
+                        src={BIOGRAPHY_BOOK_IMAGE}
+                        alt={s.book.alt}
+                        fill
+                        className="bio-book-image object-cover"
+                        sizes="288px"
+                      />
+                      <div className="bio-book-shine" aria-hidden />
+                    </motion.div>
+                  </motion.div>
+
+                  <div className="bio-book-about min-w-0">
+                    <p className="bio-book-kicker">{s.book.kicker}</p>
+                    <h3 className="bio-book-title">{s.book.title}</h3>
+                    <p className="bio-book-lead">{s.book.description}</p>
+                    <div className="bio-book-synopsis space-y-3">
+                      {s.book.synopsis.map((paragraph) => (
+                        <p key={paragraph} className="bio-book-paragraph">
+                          {paragraph}
+                        </p>
+                      ))}
+                    </div>
+                    <ul className="bio-book-highlights">
+                      {s.book.highlights.map((item) => (
+                        <li key={item} className="bio-book-highlight-item">
+                          <CheckCircle2 className="bio-book-highlight-icon" aria-hidden />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </Card>
             </motion.div>
           </RevealItem>
         </RevealStagger>
-      </motion.div>
+      </div>
     </AnimatedSection>
   );
 }

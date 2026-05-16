@@ -17,7 +17,7 @@ export function TrustSection() {
         <SectionHeading title={s.title} subtitle={s.subtitle} />
 
         <motion.div
-          className="grid gap-6 lg:grid-cols-[1fr_1.35fr]"
+          className="grid min-w-0 gap-6 md:grid-cols-2 lg:grid-cols-[1fr_1.35fr]"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -38,14 +38,14 @@ export function TrustSection() {
             {s.partners.map((name, i) => (
               <motion.div
                 key={name}
-                className="flex min-h-[5.5rem] items-center justify-center rounded-2xl border border-[#0F2745]/10 bg-white/90 px-3 text-center text-xs text-[#41576e] backdrop-blur-sm sm:text-sm"
+                className="flex min-h-[5.5rem] min-w-0 items-center justify-center rounded-2xl border border-[#0F2745]/10 bg-white/90 px-2.5 text-center text-xs text-[#41576e] backdrop-blur-sm sm:px-3 sm:text-sm"
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
                 whileHover={{ borderColor: "rgba(184,146,90,0.35)", y: -3 }}
               >
-                <span className="leading-snug">{name}</span>
+                <span className="break-safe leading-snug">{name}</span>
               </motion.div>
             ))}
           </div>
