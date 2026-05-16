@@ -1,44 +1,31 @@
-"use client";
+const PARTICLE_COUNT = 12;
 
-import { motion } from "framer-motion";
-
-const dots = Array.from({ length: 24 }, (_, i) => ({
+const dots = Array.from({ length: PARTICLE_COUNT }, (_, i) => ({
   id: i,
-  left: `${(i * 17 + 11) % 100}%`,
-  top: `${(i * 23 + 7) % 100}%`,
-  size: 1 + (i % 3),
-  delay: (i % 8) * 0.4,
-  duration: 4 + (i % 5),
+  left: `${(i * 29 + 11) % 100}%`,
+  top: `${(i * 31 + 7) % 100}%`,
+  size: 1 + (i % 2),
+  delay: `${(i % 6) * 0.45}s`,
+  duration: `${4 + (i % 4)}s`,
 }));
 
 export function Particles({ className = "" }: { className?: string }) {
   return (
-    <motion.div
-      className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}
-      aria-hidden
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1.2, delay: 0.5 }}
-    >
+    <div className={`particles-layer pointer-events-none absolute inset-0 overflow-hidden ${className}`} aria-hidden>
       {dots.map((dot) => (
-        <motion.span
+        <span
           key={dot.id}
-          className="absolute rounded-full bg-[#B8925A]/40"
+          className="particle-dot"
           style={{
             left: dot.left,
             top: dot.top,
             width: dot.size,
             height: dot.size,
-          }}
-          animate={{ opacity: [0.15, 0.55, 0.15], y: [0, -8, 0] }}
-          transition={{
-            duration: dot.duration,
-            repeat: Infinity,
-            delay: dot.delay,
-            ease: "easeInOut",
+            animationDelay: dot.delay,
+            animationDuration: dot.duration,
           }}
         />
       ))}
-    </motion.div>
+    </div>
   );
 }

@@ -4,19 +4,27 @@ import "./globals.css";
 
 const arabic = IBM_Plex_Sans_Arabic({
   variable: "--font-arabic",
-  subsets: ["arabic", "latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  subsets: ["arabic"],
+  weight: ["400", "600", "700"],
+  display: "swap",
+  preload: true,
+  adjustFontFallback: true,
 });
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  display: "swap",
+  preload: false,
 });
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["600", "700"],
+  display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -67,6 +75,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ar" dir="rtl" suppressHydrationWarning className={`${arabic.variable} ${inter.variable} ${playfair.variable} h-full antialiased`}>
+      <head>
+        <link rel="preload" href="/hero-skyline.png" as="image" type="image/png" />
+        <link rel="preload" href="/aiman-photo.png" as="image" type="image/png" />
+      </head>
       <body className="sharp-ui relative flex min-h-full flex-col overflow-x-clip bg-[#f8fafc]">
         <div className="relative z-10 flex min-h-full flex-1 flex-col">{children}</div>
       </body>
