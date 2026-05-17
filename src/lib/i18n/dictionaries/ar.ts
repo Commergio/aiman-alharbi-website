@@ -282,6 +282,10 @@ export const ar: Dictionary = {
     },
     footer: {
       rights: "جميع الحقوق محفوظة",
+      creditPrefix: "تم إنشاؤه بواسطة",
+      creditBrand: "شركة كوميرجيو",
+      creditTagline: "للتقنية واستشارات الأعمال",
+      creditAria: "زيارة الموقع الرسمي لشركة كوميرجيو",
       badge: "استشارات تنفيذية",
       ctaTitle: "جاهز لرفع أداء مؤسستك؟",
       ctaSubtitle:

@@ -12,6 +12,11 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
+/** Commergio — site developer */
+export const COMMERGIO = {
+  url: "https://commergio.com",
+} as const;
+
 /** Contact details — not locale-specific */
 export const CONTACT = {
   email: "mark@AimanAlharbi.com",

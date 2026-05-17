@@ -6,6 +6,7 @@ import { ArrowUpRight, ExternalLink, Mail, MapPin, MessageCircle, Phone } from "
 import Image from "next/image";
 import Link from "next/link";
 
+import { FooterCommergioCredit } from "@/components/layout/FooterCommergioCredit";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { useTranslations } from "@/contexts/LocaleContext";
 import { CONTACT } from "@/lib/content";
@@ -169,11 +170,14 @@ export function FooterSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <div className="section-shell flex flex-col gap-3 py-6 text-xs text-white/55 sm:flex-row sm:items-center sm:justify-between">
-            <span>{site.nameLegal}</span>
-            <span className="font-body-en">
-              © {year} {site.name}. {f.rights}.
-            </span>
+          <div className="section-shell flex flex-col items-center gap-4 py-6 text-xs text-white/55">
+            <div className="flex w-full flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <span>{site.nameLegal}</span>
+              <span className="font-body-en sm:text-end">
+                © {year} {site.name}. {f.rights}.
+              </span>
+            </div>
+            <FooterCommergioCredit />
           </div>
         </motion.div>
       </div>

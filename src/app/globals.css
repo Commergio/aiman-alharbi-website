@@ -429,6 +429,25 @@ body {
   margin: 0;
 }
 
+.bio-office-fullbleed {
+  position: relative;
+  width: 100vw;
+  max-width: 100%;
+  margin-inline: calc(50% - 50vw);
+  padding-inline: 0;
+}
+
+.bio-office-fullbleed .bio-office-frame {
+  width: 100%;
+  border-radius: 0;
+  border-inline: none;
+}
+
+.bio-office-fullbleed .bio-office-caption {
+  text-align: center;
+  padding-inline: 1rem;
+}
+
 .bio-office-frame {
   aspect-ratio: 21 / 9;
   min-height: 11.5rem;
@@ -500,24 +519,29 @@ body {
 }
 
 .bio-book-layout {
-  display: grid;
-  gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: 1.75rem;
   width: 100%;
   margin-inline: auto;
 }
 
 .bio-book-media {
-  justify-self: center;
-  width: var(--bio-book-frame-width);
-  max-width: min(var(--bio-book-frame-width), 100%);
+  order: -1;
+  width: 100%;
+  max-width: 100%;
   flex-shrink: 0;
 }
 
 .bio-book-visual {
   position: relative;
   width: 100%;
+  max-width: 100%;
+  margin-inline: auto;
   aspect-ratio: var(--bio-book-aspect);
+  min-height: min(52vw, 22rem);
+  max-height: min(72vh, 32rem);
   border: 1px solid rgba(184, 146, 90, 0.22);
   background: #0a2744;
   line-height: 0;
@@ -596,18 +620,9 @@ body {
 }
 
 @media (min-width: 768px) {
-  :root {
-    --bio-book-frame-width: min(20rem, 38vw);
-  }
-
-  .bio-book-layout {
-    grid-template-columns: minmax(0, 1fr) minmax(16rem, var(--bio-book-frame-width));
-    gap: clamp(1.5rem, 3vw, 2.5rem);
-    align-items: center;
-  }
-
-  .bio-book-media {
-    justify-self: center;
+  .bio-book-visual {
+    min-height: min(42vw, 26rem);
+    max-height: min(68vh, 36rem);
   }
 
   .bio-book-title {
@@ -629,13 +644,13 @@ body {
 }
 
 @media (min-width: 1024px) {
-  :root {
-    --bio-book-frame-width: min(24rem, 28vw);
+  .bio-book-layout {
+    gap: clamp(2rem, 4vw, 2.75rem);
   }
 
-  .bio-book-layout {
-    grid-template-columns: minmax(0, 1fr) minmax(18rem, 26rem);
-    gap: clamp(2rem, 4vw, 3rem);
+  .bio-book-visual {
+    min-height: min(36vw, 28rem);
+    max-height: min(64vh, 38rem);
   }
 
   .bio-book-about {
@@ -660,7 +675,7 @@ body {
   width: 100% !important;
   height: 100% !important;
   max-width: none !important;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center center;
 }
 
@@ -904,6 +919,165 @@ body {
 
 .footer-executive-link:hover {
   color: #d2b181;
+}
+
+/* اعتماد كوميرجيو — شارة ملفتة في التذييل */
+.footer-credit-pill {
+  position: relative;
+  display: inline-flex;
+  max-width: min(100%, 26rem);
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 1.15rem 0.7rem 0.8rem;
+  border-radius: 999px;
+  text-decoration: none;
+  border: 1px solid rgba(184, 146, 90, 0.42);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(184, 146, 90, 0.16) 0%,
+      rgba(255, 255, 255, 0.07) 42%,
+      rgba(8, 21, 37, 0.55) 100%
+    );
+  box-shadow:
+    0 10px 32px -14px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+    0 1px 0 rgba(255, 255, 255, 0.14) inset;
+  overflow: hidden;
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.footer-credit-pill::before {
+  content: "";
+  position: absolute;
+  inset: -40% -20%;
+  background: linear-gradient(
+    105deg,
+    transparent 38%,
+    rgba(255, 255, 255, 0.14) 50%,
+    transparent 62%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.footer-credit-pill:hover {
+  transform: translateY(-3px);
+  border-color: rgba(210, 177, 129, 0.72);
+  box-shadow:
+    0 16px 40px -12px rgba(184, 146, 90, 0.35),
+    0 10px 28px -14px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+}
+
+.footer-credit-pill:hover::before {
+  transform: translateX(120%);
+}
+
+.footer-credit-mark {
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+  animation: footer-credit-pulse 3.5s ease-in-out infinite;
+}
+
+.footer-credit-mark-bg {
+  fill: rgba(184, 146, 90, 0.22);
+  stroke: rgba(210, 177, 129, 0.45);
+  stroke-width: 1;
+}
+
+.footer-credit-mark-letter {
+  fill: url(#footer-credit-gold);
+}
+
+.footer-credit-mark-spark {
+  fill: #e8d4b0;
+  animation: footer-credit-spark 2.2s ease-in-out infinite;
+}
+
+.footer-credit-copy {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1rem;
+  text-align: start;
+  line-height: 1.35;
+}
+
+.footer-credit-prefix {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.58);
+}
+
+.footer-credit-brand {
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  background: linear-gradient(92deg, #f2e0bc 0%, #d2b181 45%, #b8925a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.footer-credit-tagline {
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.52);
+}
+
+.footer-credit-arrow {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(184, 146, 90, 0.35);
+  background: rgba(184, 146, 90, 0.12);
+  color: #d2b181;
+}
+
+@keyframes footer-credit-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.04);
+  }
+}
+
+@keyframes footer-credit-spark {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-credit-mark,
+  .footer-credit-mark-spark {
+    animation: none;
+  }
+
+  .footer-credit-pill::before {
+    display: none;
+  }
 }
 
 /* شريط الخبرة — امتداد آمن داخل الحاوية بدون 100vw */
@@ -1224,20 +1398,20 @@ body {
   padding-inline-start: 1.45rem;
   border-radius: 1.35rem;
   background:
-    radial-gradient(ellipse 95% 85% at 12% 42%, rgba(255, 255, 255, 0.38) 0%, transparent 68%),
+    radial-gradient(ellipse 95% 85% at 12% 42%, rgba(255, 255, 255, 0.55) 0%, transparent 68%),
     linear-gradient(
       152deg,
-      rgba(255, 255, 255, 0.68) 0%,
-      rgba(250, 252, 255, 0.52) 48%,
-      rgba(255, 255, 255, 0.46) 100%
+      rgba(255, 255, 255, 0.9) 0%,
+      rgba(250, 252, 255, 0.82) 48%,
+      rgba(255, 255, 255, 0.78) 100%
     );
-  border: 1px solid rgba(255, 255, 255, 0.58);
+  border: 1px solid rgba(255, 255, 255, 0.82);
   box-shadow:
-    0 28px 56px -32px rgba(8, 30, 54, 0.28),
-    0 8px 24px -12px rgba(15, 39, 69, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(20px) saturate(1.2);
-  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+    0 28px 56px -32px rgba(8, 30, 54, 0.32),
+    0 8px 24px -12px rgba(15, 39, 69, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(18px) saturate(1.15);
+  -webkit-backdrop-filter: blur(18px) saturate(1.15);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }

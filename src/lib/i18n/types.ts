@@ -105,6 +105,10 @@ export type Dictionary = {
     };
     footer: {
       rights: string;
+      creditPrefix: string;
+      creditBrand: string;
+      creditTagline: string;
+      creditAria: string;
       badge: string;
       ctaTitle: string;
       ctaSubtitle: string;

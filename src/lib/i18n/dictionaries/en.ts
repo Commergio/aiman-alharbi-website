@@ -286,6 +286,10 @@ export const en: Dictionary = {
     },
     footer: {
       rights: "All rights reserved",
+      creditPrefix: "Built by",
+      creditBrand: "Commergio",
+      creditTagline: "Technology & Business Consulting",
+      creditAria: "Visit the official Commergio website",
       badge: "Executive Advisory",
       ctaTitle: "Ready to elevate institutional performance?",
       ctaSubtitle:

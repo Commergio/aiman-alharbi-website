@@ -21,31 +21,33 @@ export function BiographySection() {
     <AnimatedSection id="biography">
       <div className="section-shell min-w-0">
         <SectionHeading title={s.title} subtitle={s.subtitle} />
+      </div>
 
-        <motion.figure
-          className="bio-office mb-8 sm:mb-10 md:mb-12"
-          initial={{ opacity: 0, y: 22 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+      <motion.figure
+        className="bio-office bio-office-fullbleed mb-8 sm:mb-10 md:mb-12"
+        initial={{ opacity: 0, y: 22 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <motion.div
+          className="bio-office-frame relative overflow-hidden"
+          whileHover={{ scale: 1.008 }}
+          transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
         >
-          <motion.div
-            className="bio-office-frame relative overflow-hidden"
-            whileHover={{ scale: 1.008 }}
-            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <Image
-              src="/aiman-office.png"
-              alt={s.office.alt}
-              fill
-              className="bio-office-image object-cover"
-              sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1152px"
-            />
-            <div className="bio-office-overlay" aria-hidden />
-          </motion.div>
-          <figcaption className="bio-office-caption">{s.office.caption}</figcaption>
-        </motion.figure>
+          <Image
+            src="/aiman-office.png"
+            alt={s.office.alt}
+            fill
+            className="bio-office-image object-cover"
+            sizes="100vw"
+          />
+          <div className="bio-office-overlay" aria-hidden />
+        </motion.div>
+        <figcaption className="bio-office-caption section-shell">{s.office.caption}</figcaption>
+      </motion.figure>
 
+      <div className="section-shell min-w-0">
         <RevealStagger className="grid gap-10 lg:grid-cols-[0.95fr_1.15fr] lg:items-start [&>*]:min-w-0">
           <RevealItem>
             <Card className="glass-card space-y-1 p-6 md:p-8">
@@ -90,7 +92,7 @@ export function BiographySection() {
         >
           <Card className="bio-book-showcase glass-card w-full overflow-hidden rounded-2xl border border-[#B8925A]/22 p-4 shadow-none backdrop-blur-[6px] sm:p-6 md:p-8 lg:p-10">
             <div className="bio-book-layout">
-              <div className="bio-book-about min-w-0">
+              <div className="bio-book-about min-w-0 w-full">
                 <p className="bio-book-kicker">{s.book.kicker}</p>
                 <h3 className="bio-book-title">{s.book.title}</h3>
                 <p className="bio-book-lead">{s.book.description}</p>
@@ -113,7 +115,7 @@ export function BiographySection() {
 
               <motion.div
                 className="bio-book-media"
-                whileHover={{ scale: 1.02, y: -2 }}
+                whileHover={{ scale: 1.01 }}
                 transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
               >
                 <div className="bio-book-visual relative overflow-hidden rounded-2xl">
@@ -121,8 +123,8 @@ export function BiographySection() {
                     src={BIOGRAPHY_BOOK_IMAGE}
                     alt={s.book.alt}
                     fill
-                    className="bio-book-image object-cover"
-                    sizes="(max-width: 767px) min(220px, 88vw), (max-width: 1023px) 280px, (max-width: 1279px) 320px, 380px"
+                    className="bio-book-image object-contain"
+                    sizes="(max-width: 767px) 100vw, (max-width: 1280px) 90vw, 1152px"
                   />
                   <div className="bio-book-shine" aria-hidden />
                 </div>
