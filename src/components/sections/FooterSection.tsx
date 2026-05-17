@@ -2,7 +2,7 @@
 
 import { AnimatedSection } from "@/components/motion/AnimatedSection";
 import { motion } from "framer-motion";
-import { ArrowUpRight, ExternalLink, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { ArrowUpLeft, ArrowUpRight, ExternalLink, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -17,7 +17,8 @@ const fadeUp = {
 };
 
 export function FooterSection() {
-  const { dict } = useTranslations();
+  const { dict, locale } = useTranslations();
+  const CtaArrow = locale === "ar" ? ArrowUpLeft : ArrowUpRight;
   const { site, nav } = dict;
   const f = dict.sections.footer;
   const contact = dict.sections.contact.channels;
@@ -61,7 +62,7 @@ export function FooterSection() {
             <motion.div variants={fadeUp} className="shrink-0">
               <MagneticButton href="#contact" variant="gold" size="lg" className="gap-2">
                 <span>{nav.bookConsultation}</span>
-                <ArrowUpRight className="size-4 shrink-0" aria-hidden />
+                <CtaArrow className="size-4 shrink-0" aria-hidden />
               </MagneticButton>
             </motion.div>
           </motion.div>

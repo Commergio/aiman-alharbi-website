@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Sans_Arabic, Inter, Playfair_Display } from "next/font/google";
+
+import { LocaleInitScript } from "@/components/providers/LocaleInitScript";
 import "./globals.css";
 
 const arabic = IBM_Plex_Sans_Arabic({
@@ -29,9 +31,21 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://aimanalharbi.com"),
-  title: "أيمن شجاع سعود الحربي | خبير التسويق والعقار والاستشارات الإدارية",
+  title: {
+    default: "Aiman Alharbi | أيمن شجاع سعود الحربي",
+    template: "%s | Aiman Alharbi",
+  },
   description:
-    "موقع أيمن شجاع سعود الحربي الرسمي: خبرة تنفيذية تتجاوز 20 عاماً في التسويق، التطوير العقاري، الاستشارات الإدارية، وتدريب الشركات والكوادر المهنية.",
+    "خبير التسويق والعقار والاستشارات الإدارية — موقع أيمن شجاع سعود الحربي الرسمي: خبرة تنفيذية تتجاوز 20 عاماً في التسويق، التطوير العقاري، والاستشارات الإدارية.",
+  applicationName: "Aiman Alharbi",
+  icons: {
+    icon: [
+      { url: "/icon.png", type: "image/png" },
+      { url: "/icon-dark.png", type: "image/png", media: "(prefers-color-scheme: dark)" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
   keywords: [
     "أيمن شجاع سعود الحربي",
     "استشارات تسويقية",
@@ -76,6 +90,7 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl" suppressHydrationWarning className={`${arabic.variable} ${inter.variable} ${playfair.variable} h-full antialiased`}>
       <head>
+        <LocaleInitScript />
         <link rel="preload" href="/hero-skyline.png" as="image" type="image/png" />
         <link rel="preload" href="/aiman-photo.png" as="image" type="image/png" />
       </head>

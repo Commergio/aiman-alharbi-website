@@ -54,6 +54,7 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
     const root = document.documentElement;
     root.lang = locale;
     root.dir = locale === "ar" ? "rtl" : "ltr";
+    root.dataset.locale = locale;
     document.title = dict.meta.title;
   }, [hydrated, locale, dict.meta.title]);
 

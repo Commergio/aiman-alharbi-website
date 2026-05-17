@@ -2,13 +2,14 @@
 
 import { AnimatedSection } from "@/components/motion/AnimatedSection";
 import { motion } from "framer-motion";
-import { ArrowUpLeft } from "lucide-react";
+import { ArrowUpLeft, ArrowUpRight } from "lucide-react";
 
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { useTranslations } from "@/contexts/LocaleContext";
 
 export function ArticlesSection() {
-  const { dict } = useTranslations();
+  const { dict, locale } = useTranslations();
+  const ReadArrow = locale === "ar" ? ArrowUpLeft : ArrowUpRight;
   const s = dict.sections.articles;
 
   return (
@@ -51,7 +52,13 @@ export function ArticlesSection() {
               <p className="mt-3 flex-1 text-sm leading-7 text-[#4a6078]">{article.excerpt}</p>
               <div className="mt-6 flex items-center gap-2 text-sm font-medium text-[#0F2745]">
                 <span>{s.readAnalysis}</span>
-                <ArrowUpLeft className="size-4 text-[#B8925A] transition group-hover:-translate-x-0.5 group-hover:-translate-y-0.5" />
+                <ReadArrow
+                  className={`size-4 text-[#B8925A] transition ${
+                    locale === "ar"
+                      ? "group-hover:-translate-x-0.5 group-hover:-translate-y-0.5"
+                      : "group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  }`}
+                />
               </div>
               <div className="pointer-events-none absolute -bottom-12 -start-12 size-32 rounded-full bg-[#0F2745]/[0.03]" />
             </motion.article>

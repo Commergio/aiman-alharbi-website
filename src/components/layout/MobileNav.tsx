@@ -10,9 +10,13 @@ import { LanguageToggle } from "@/components/ui/LanguageToggle";
 import { useTranslations } from "@/contexts/LocaleContext";
 
 export function MobileNav() {
-  const { dict } = useTranslations();
+  const { dict, locale } = useTranslations();
   const { nav } = dict;
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [locale]);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
